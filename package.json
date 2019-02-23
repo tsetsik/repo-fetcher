@@ -1,0 +1,26 @@
+{
+  "name": "repo-fetcher",
+  "version": "1.0.0",
+  "description": "This README outlines the details of collaborating on this Ember application. A short introduction of this app could easily go here.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsetsik/repo-fetcher.git"
+  },
+  "keywords": [
+    "repo",
+    "ftecher"
+  ],
+  "author": "Tsvetomir Demerdzhiev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsetsik/repo-fetcher/issues"
+  },
+  "homepage": "https://github.com/tsetsik/repo-fetcher#readme",
+  "dependencies": {
+    "hapi": "^18.1.0"
+  }
+}
