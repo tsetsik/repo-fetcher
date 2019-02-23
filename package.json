@@ -4,6 +4,8 @@
   "description": "This README outlines the details of collaborating on this Ember application. A short introduction of this app could easily go here.",
   "main": "index.js",
   "scripts": {
+    "start-node": "node index.js",
+    "start": "nodemon --exec babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +24,16 @@
   "homepage": "https://github.com/tsetsik/repo-fetcher#readme",
   "dependencies": {
     "hapi": "^18.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "bluebird": "^3.5.3",
+    "dotenv": "^6.2.0",
+    "node-cache": "^4.2.0",
+    "nodemon": "^1.18.10",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
   }
 }
