@@ -3,13 +3,14 @@
 import Hapi from 'hapi';
 import Repos from './components/repos';
 import Commits from './components/commits';
+import Generalinfo from './components/generalinfo';
 import dotenv from 'dotenv';
 
 const result = dotenv.config();
 
 const server = Hapi.server({
-    port: 4000,
-    host: 'localhost'
+    port: process.env.PORT,
+    host: process.env.HOST
 });
 
 const init = async () => {
@@ -30,6 +31,14 @@ server.route({
   path: '/commits/{repo}/{commit_hash}',
   handler: (request, h) => {
     return (new Commits(request, h)).render();
+  }
+});
+
+server.route({
+  method: 'GET',
+  path: '/generalinfo/{repo}',
+  handler: (request, h) => {
+    return (new Generalinfo(request, h)).render();
   }
 });
 

@@ -6,11 +6,7 @@ export default class Commits extends Base {
   }
 
   async fetch() {
-    return await this._request(this._url()).catch(err => {
-      let data = { error: true, message: 'Not Found' };
-      this.h.response(data).code(403);
-      return data;
-    });
+    return await this._request(this._url());
   }
 
   _url() {
