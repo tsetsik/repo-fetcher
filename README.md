@@ -12,14 +12,19 @@ In order to get it up and running in development mode, you need to perform the f
   - GENERALINFO_URL
   - PORT
   - HOST
+  - JWT_SECRET
+  - AUTH_URL
+  - USERNAME - to see t
 - run `docker-compose up`
 
 ## Usage
 
-The following endpoints are exposed, all via GET:
+The following endpoints are exposed, all via GET and they require token header `Authorization Bearer <token>`:
 - /repos
 - /generalinfo/:nameId
 - /commits/:nameId
+
+There is a endpoint `/auth` that uses POST and requires parameters `username` and `password`. Based on valid credentials, it issues a JWT token, which have to be used for authentication for the others endpoints
 
 ## Respond
 - repos: `[{id: 123,..}, {id: 456,..}]`
