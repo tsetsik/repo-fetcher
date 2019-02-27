@@ -14,7 +14,8 @@ In order to get it up and running in development mode, you need to perform the f
   - HOST
   - JWT_SECRET
   - AUTH_URL
-  - USERNAME - to see t
+  - USERNAME - for demo purposes (username that checks for validation)
+  - PASSWORD - for demo purposes (password that check for validation)
 - run `docker-compose up`
 
 ## Usage
