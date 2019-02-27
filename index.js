@@ -4,6 +4,7 @@ import Hapi from 'hapi';
 import Repos from './components/repos';
 import Commits from './components/commits';
 import Generalinfo from './components/generalinfo';
+import Auth from './components/auth';
 import dotenv from 'dotenv';
 
 const result = dotenv.config();
@@ -39,6 +40,14 @@ server.route({
   path: '/generalinfo/{repo}',
   handler: (request, h) => {
     return (new Generalinfo(request, h)).render();
+  }
+});
+
+server.route({
+  method: 'POST',
+  path: '/auth',
+  handler: (request, h) => {
+    return (new Auth(request, h)).render();
   }
 });
 
