@@ -25,7 +25,7 @@ export default class Base {
     return rp(options)
       .then(body => {
         let items = JSON.parse(body);
-        appCache.set(url, items, ttl)
+        appCache.set(url, items, ttl);
         return items;
       })
       .catch(err => {
@@ -35,30 +35,39 @@ export default class Base {
       });
   }
 
-  render() {
-    // Validate the jwt token
-    return this.validateJwtToken() ? this.respond() : this.respondFail();
+  async render() {
+    let response = this.h.response(
+      this.validateJwtToken() ? await this.respond(response) : this.respondFail(response)
+    );
+    this.addResponseHeaders(response);
+    return response;
   }
   
   validateJwtToken() {
     let jwt_token = this.request.headers['authorization'].replace('Bearer ', '');
-    return this.token.verify(jwt_token);
+    let valid = this.token.verify(jwt_token);
+
+    if (valid)
+      this.jwt_token = jwt_token;
+
+    return valid;
   }
 
-  addResponseHeaders(response, token) {
+  addResponseHeaders(response) {
     // Add the token to the response
-    response.header('Authorization', 'Bearer ' + token);
+    if (this.jwt_token)
+      response.header('Authorization', 'Bearer ' + this.jwt_token);
 
     return response;
   }
 
-  respond() {
+  respond(response) {
     throw "You need to implement respond method in order to use it";
   }
 
-  respondFail(message = 'Unatuhorized request', code = 401) {
+  respondFail(response, message = 'Unatuhorized request', code = 401) {
     let data = { error: true, message: message };
-    this.h.response(data).code(code);
+    (response || this.h.response(data)).code(code);
     return data;
   }
 }

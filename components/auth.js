@@ -20,8 +20,8 @@ export default class Auth extends Base {
   respondSuccess() {
     let response = this.h.response({ username: this.request.payload.username });
 
-    let token = this.token.generate(this.request);
-    this.addResponseHeaders(response, token);
+    this.jwt_token = this.token.generate(this.request);
+    this.addResponseHeaders(response);
 
     return response;
   }
