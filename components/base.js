@@ -45,10 +45,11 @@ export default class Base {
     return this.token.verify(jwt_token);
   }
 
-  addResponseToken(token) {
-    // let response = ;
-    // this.h.response('success').response.header('Authorization', token);
-    // this.h.response({'foo': '111'}).code(200);
+  addResponseHeaders(response, token) {
+    // Add the token to the response
+    response.header('Authorization', 'Bearer ' + token);
+
+    return response;
   }
 
   respond() {

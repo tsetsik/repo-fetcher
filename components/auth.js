@@ -18,11 +18,11 @@ export default class Auth extends Base {
   }
 
   respondSuccess() {
-    let token = this.token.generate(this.request);
-    this.addResponseToken(token);    
-
     let response = this.h.response({ username: this.request.payload.username });
-    response.header('Authorization', token);
+
+    let token = this.token.generate(this.request);
+    this.addResponseHeaders(response, token);
+
     return response;
   }
 }
