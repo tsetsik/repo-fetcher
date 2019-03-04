@@ -12,7 +12,13 @@ const result = dotenv.config();
 const server = Hapi.server({
     port: process.env.PORT,
     host: process.env.HOST,
-    routes: { cors: { origin: ['*'] } }
+    routes: {
+      cors: {
+        origin: ["*"],
+        exposedHeaders: ["X-JWT-TOKEN"],
+        credentials: true
+      }
+    }
 });
 
 const init = async () => {

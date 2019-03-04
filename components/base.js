@@ -56,7 +56,7 @@ export default class Base {
   addResponseHeaders(response) {
     // Add the token to the response
     if (this.jwt_token)
-      response.header('Authorization', 'Bearer ' + this.jwt_token);
+      response.header('X-JWT-TOKEN', this.jwt_token);
 
     return response;
   }

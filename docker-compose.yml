@@ -2,7 +2,7 @@ version: "2"
 
 services:
   web:
-    image: node:alpine
+    build: .
     
     volumes:
       # Mount the app code inside the container's `/usr/src/app` directory:
@@ -25,4 +25,4 @@ services:
       PORT: 4000
       HOST: 0.0.0.0
       NODE_ENV: development
-    command: npm run start
+    command: npm start
