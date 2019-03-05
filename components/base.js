@@ -44,7 +44,10 @@ export default class Base {
   }
   
   validateJwtToken() {
-    let jwt_token = this.request.headers['authorization'].replace('Bearer ', '');
+    let auth = this.request.headers['authorization'];
+    if(!auth) return false;
+
+    let jwt_token = auth.replace('Bearer ', '');
     let valid = this.token.verify(jwt_token);
 
     if (valid)
