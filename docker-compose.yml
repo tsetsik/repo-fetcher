@@ -2,7 +2,7 @@ version: "2"
 
 services:
   web:
-    build: .
+    image: node:alpine
     
     volumes:
       # Mount the app code inside the container's `/usr/src/app` directory:
