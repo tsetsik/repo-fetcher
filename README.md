@@ -16,6 +16,7 @@ In order to get it up and running in development mode, you need to perform the f
   - AUTH_URL
   - USERNAME - for demo purposes (username that checks for validation)
   - PASSWORD - for demo purposes (password that check for validation)
+ - run `npm install`
 - run `docker-compose up`
 
 ## Usage
@@ -32,3 +33,7 @@ There is a endpoint `/auth` that uses POST and requires parameters `username` an
 - generalinfo: `{id: 123,..}`
 - commits: `{sha: 'f20c3..', url: 'https://..',..}`
 
+## Example iteractions with the api
+- `curl -i -d "username=xxx&password=xxx" http://localhost:4000/auth` - It will return a header in which if the credentials are correct will be like `x-jwt-token: eyJhbGciOiJIUzI1NiIsInR5cCI6Ikp..`
+
+- `curl -i -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6Ikp.." http://localhost:4000/repos` - we need to send the token in the headers so the api can validate it and give us access to the ednpoint that is requiring token
